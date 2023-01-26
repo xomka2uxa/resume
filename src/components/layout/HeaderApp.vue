@@ -2,49 +2,46 @@
   <div class="header">
     <div class="container">
       <div class="inner flex">
-        <div class="header-logo col-8">
+        <div class="header-logo col-15">
           <router-link to="/">
             <img src="../../assets/logo-resume.png" />
           </router-link>
         </div>
-        <div class="header-nav col-70">
-          <header-menu />
-        </div>
-        <div class="header-right col-8">
-          <header-login />
-        </div>
-        <div class="header-right_mobile col-8">
-          <div class="header-burger">
-            <transition
-              name="fade"
-              mode="out-in"
-              @click="isOpenMenu = !isOpenMenu"
-            >
-              <div class="burger-icon" v-if="!isOpenMenu">
-                <mdicon name="menu" class="header__icon" />
-              </div>
-              <div class="menu-close" v-else>
-                <mdicon name="close" class="menu-close__icon" />
-              </div>
-            </transition>
+        <div class="header-nav">
+          <div class="header-menu">
+            <header-menu />
+          </div>
+          <div class="header-right">
+            <div class="header-burger">
+              <transition
+                name="fade"
+                mode="out-in"
+                @click="isOpenMenu = !isOpenMenu"
+              >
+                <div class="burger-icon" v-if="!isOpenMenu">
+                  <mdicon name="menu" class="header__icon" />
+                </div>
+                <div class="menu-close" v-else>
+                  <mdicon name="close" class="menu-close__icon" />
+                </div>
+              </transition>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <header-nav v-if="isOpenMenu" @close="closeMenuToggle" />
+  <div class="header-modal" v-if="isOpenMenu">
+    <header-menu @click="closeMenuToggle" />
+  </div>
 </template>
 
 <script lang="js">
-import HeaderMenu from "@/components/default/HeaderMenu.vue";
-import HeaderLogin from "@/components/default/HeaderLogin.vue";
-import HeaderNav from "@/components/default/HeaderNav.vue";
+import HeaderMenu from "@/components/layout/HeaderMenu.vue";
 
 export default {
   components: {
     HeaderMenu,
-    HeaderLogin,
-    HeaderNav
   },
   data() {
     return {
@@ -75,15 +72,6 @@ export default {
     }
 
     .header-right {
-      display: flex;
-      justify-content: flex-end;
-
-      @include lg-down {
-        display: none;
-      }
-    }
-
-    .header-right_mobile {
       display: none;
 
       @include lg-down {
@@ -105,10 +93,28 @@ export default {
       }
     }
     .header-nav {
+      width: 85%;
+
+      @include lg-down {
+        width: 50%;
+      }
+    }
+    .header-menu {
       @include lg-down {
         display: none;
       }
     }
   }
+}
+.header-modal {
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 63px;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  padding: 15px;
 }
 </style>

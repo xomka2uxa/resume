@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
 .header-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 
   @include lg-down {
     justify-content: flex-start;

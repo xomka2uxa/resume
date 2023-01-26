@@ -6,7 +6,7 @@
 </template>
 
 <script lang="js">
-import HeaderApp from "@/components/default/HeaderApp.vue";
+import HeaderApp from "@/components/layout/HeaderApp.vue";
 export default {
   name: "DefaultLayout",
   components: {

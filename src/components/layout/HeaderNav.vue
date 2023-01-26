@@ -1,18 +1,15 @@
 <template>
   <div class="header-nav">
     <header-menu @click="$emit('close')" />
-    <header-login @click="$emit('close')" />
   </div>
 </template>
 
 <script>
-import HeaderMenu from "@/components/default/HeaderMenu.vue";
-import HeaderLogin from "@/components/default/HeaderLogin.vue";
+import HeaderMenu from "@/components/layout/HeaderMenu.vue";
 
 export default {
   components: {
     HeaderMenu,
-    HeaderLogin,
   },
 
   props: ["isOpenMenu"],

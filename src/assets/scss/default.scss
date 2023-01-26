@@ -74,18 +74,13 @@ a {
   position: relative;
 }
 
-.col-8 {
-  width: 8%;
+.col-15 {
+  width: 15%;
   position: relative;
 
   @include lg-down {
     width: 50%;
   }
-}
-
-.col-70 {
-  width: 70%;
-  position: relative;
 }
 
 .flex {
