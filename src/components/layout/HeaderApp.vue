@@ -8,20 +8,20 @@
           </router-link>
         </div>
         <div class="header-nav">
-          <div class="header-menu">
-            <header-menu />
+          <div class="header-routes" :class="{ _mobile: isAddClass }">
+            <header-menu @click="closeMenuToggle" />
           </div>
           <div class="header-right">
             <div class="header-burger">
-              <transition
-                name="fade"
-                mode="out-in"
-                @click="isOpenMenu = !isOpenMenu"
-              >
-                <div class="burger-icon" v-if="!isOpenMenu">
+              <transition name="fade" mode="out-in">
+                <div
+                  class="burger-icon"
+                  v-if="!isOpenMenu"
+                  @click="openMenuToggle"
+                >
                   <mdicon name="menu" class="header__icon" />
                 </div>
-                <div class="menu-close" v-else>
+                <div class="menu-close" v-else @click="closeMenuToggle">
                   <mdicon name="close" class="menu-close__icon" />
                 </div>
               </transition>
@@ -30,9 +30,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="header-modal" v-if="isOpenMenu">
-    <header-menu @click="closeMenuToggle" />
   </div>
 </template>
 
@@ -46,12 +43,17 @@ export default {
   data() {
     return {
       isOpenMenu: false,
+      isAddClass: false,
     };
   },
   methods: {
     closeMenuToggle() {
       this.isOpenMenu = false;
-      console.log(55)
+      this.isAddClass = false;
+    },
+    openMenuToggle() {
+      this.isOpenMenu = true;
+      this.isAddClass = true;
     },
   }
 }
@@ -99,22 +101,26 @@ export default {
         width: 50%;
       }
     }
-    .header-menu {
+    .header-routes {
       @include lg-down {
         display: none;
       }
+
+      &._mobile {
+        @include lg-down {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          height: 100%;
+          width: 100%;
+          position: fixed;
+          top: 63px;
+          left: 0;
+          background-color: rgb(0, 0, 0);
+          padding: 15px;
+        }
+      }
     }
   }
-}
-.header-modal {
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 63px;
-  left: 0;
-  background-color: rgb(0, 0, 0);
-  padding: 15px;
 }
 </style>
