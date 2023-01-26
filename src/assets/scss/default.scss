@@ -1,0 +1,117 @@
+html {
+  font-size: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+
+  &._locked {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: stretch;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+}
+
+.disabled button {
+  cursor: not-allowed;
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 10px;
+}
+
+.col-50 {
+  width: 50%;
+  position: relative;
+}
+
+.col-30 {
+  width: 30%;
+  position: relative;
+}
+
+.col-8 {
+  width: 8%;
+  position: relative;
+
+  @include lg-down {
+    width: 50%;
+  }
+}
+
+.col-70 {
+  width: 70%;
+  position: relative;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.fade-enter-active{
+  animation: fadeIn 0.5s;
+}
+
+.fade-leave-active{
+  animation: fadeOut 0.5s;
+}
+
+@keyframes fadeIn{
+  from{ opacity: 0 }
+  to{ opacity: 1 }
+}
+
+@keyframes fadeOut{
+  from{ opacity: 1 }
+  to{ opacity: 0 }
+}
