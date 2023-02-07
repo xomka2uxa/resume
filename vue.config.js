@@ -8,6 +8,7 @@ module.exports = defineConfig({
         additionalData: `
           @import "@/assets/scss/shared/variables.scss";
           @import "@/assets/scss/shared/mixins.scss";
+          @import "@/assets/scss/shared/fonts.scss";
         `,
       },
     },
